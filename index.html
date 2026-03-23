@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junhao | CS Portfolio</title>
+    <title>Junhao Li | CS Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -20,29 +20,24 @@
 
     <section id="home" class="hero">
         <div class="container hero-grid">
-            
             <div class="hero-text">
-                <p class="small-role">CS STUDENT & DEVELOPER</p>
-                
+                <p class="small-role">Computer Science @ UF</p>
                 <h1 class="hero-title-large">
-                    <span class="outline-text">HELLO, I'M</span><br> <span>JUNHAO.</span>       </h1>
-                
+                    <span class="outline-text">HELLO, I'M</span><br> <span>JUNHAO.</span>
+                </h1>
                 <p class="subtitle">
-                    Welcome to my portfolio! I craft scalable backend systems and intuitive user experiences using modern technologies.
+                    I am a software developer specializing in computer vision, backend systems and IoT integration. Currently seeking 2026 internship opportunities.
                 </p>
-                
                 <div class="cta-buttons">
                     <a href="#projects" class="btn primary">View My Work</a>
-                    <a href="#contact" class="btn secondary">Contact Me</a>
+                    <a href="mailto:lijunhao3165@gmail.com" class="btn secondary">Email Me</a>
                 </div>
             </div>
-
             <div class="hero-image-container">
                 <div class="image-frame">
-                    <img src="img1.jpg" alt="Junhao Profile" class="profile-photo">
+                    <img src="img1.jpg" alt="Junhao Li" class="profile-photo">
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -51,20 +46,21 @@
             <h2 class="section-title">01. About Me</h2>
             <div class="about-content">
                 <p>
-                    I am currently a Computer Science student with a passion for building software that solves real-world problems. 
-                    I focus on <strong>system programming</strong> and <strong>backend development</strong>.
+                    I am a **Computer Science** student at the **University of Florida** (GPA: 3.87) with a minor in **Astronomy**. My primary expertise lies in **Computer Vision** and **Digital Image Processing**, where I focus on developing intelligent systems to interpret and enhance visual data.
                 </p>
                 <p>
-                    I am preparing for an internship and eager to apply my skills in a professional environment.
-                    Here are a few technologies I've been working with recently:
+                    Beyond my research in CV, I have extensive experience building **scalable backend architectures** and **integrated IoT ecosystems**. I enjoy bridging the gap between low-level hardware sensors and high-level software applications. 
+                </p>
+                <p>
+                    Here are the core technologies I have been working with:
                 </p>
                 <ul class="skills-list">
+                    <li>OpenCV & PyTorch</li>
                     <li>Python & C++</li>
-                    <li>Linux / Bash</li>
-                    <li>Git & GitHub</li>
-                    <li>HTML/CSS/JS</li>
-                    <li>SQL</li>
-                    <li>React</li>
+                    <li>FastAPI</li>
+                    <li>Firebase & Cloud Integration</li>
+                    <li>Linux & Git</li>
+                    <li>Blender</li>
                 </ul>
             </div>
         </div>
@@ -76,47 +72,48 @@
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <h3>Course Planner App</h3>
+                    <h3>Image Enhancement Platform</h3>
                     <p class="project-desc">
-                        A web application helping students plan their semester schedules. Features include drag-and-drop interface and conflict detection.
+                        A FastAPI-based platform featuring a plugin-style pipeline architecture. It implements algorithms like CLAHE and Retinex for automated image processing[cite: 24, 25].
                     </p>
                     <div class="project-tech">
                         <span>Python</span>
-                        <span>Django</span>
-                        <span>SQLite</span>
+                        <span>FastAPI</span>
+                        <span>OpenCV</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank">GitHub Repo -></a>
+                        <a href="https://github.com/JunhaoLiXD/vision-enhance-platform" target="_blank">Source Code -></a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Simple Shell Implementation</h3>
+                    <h3>IoT Smart Bike Lock System</h3>
                     <p class="project-desc">
-                        A UNIX-like shell implemented in C. Supports basic commands, I/O redirection, and piping. Demonstrates understanding of OS concepts.
+                        Led the design of a dual-ESP32 security system. Integrated GPS tracking, Bluetooth communication, and Firebase for real-time mobile alerts via Pushover[cite: 17, 18, 19].
                     </p>
                     <div class="project-tech">
-                        <span>C Language</span>
-                        <span>Linux API</span>
-                        <span>Makefile</span>
+                        <span>C++ (ESP32)</span>
+                        <span>Firebase</span>
+                        <span>IoT</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank">GitHub Repo -></a>
+                        <a href="https://github.com/JunhaoLiXD/Smart_Lock_System" target="_blank">Source Code -></a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Personal Portfolio Website</h3>
+                    <h3>Hand Keypoint Detection</h3>
                     <p class="project-desc">
-                        A responsive static website hosted on GitHub Pages to showcase my coding projects and resume.
+                        As a Research Assistant, I specialized in medical image preprocessing and deep learning. I trained **U-Net** models to achieve precise anatomical labeling and analyzed how various enhancement strategies affect model accuracy. [cite: 27, 28, 31, 32]
                     </p>
                     <div class="project-tech">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
+                        <span>PyTorch</span>
+                        <span>U-Net</span>
+                        <span>Image Preprocessing</span>
                     </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank">GitHub Repo -></a>
+                    <div class="project-status" style="margin-top: 15px; opacity: 0.6;">
+                        <span style="font-family: var(--font-code); font-size: 0.8rem;">
+                        </span>
                     </div>
                 </div>
 
@@ -127,14 +124,13 @@
     <section id="contact">
         <h2 class="contact-title">Get In Touch</h2>
         <p class="contact-text">
-            I am currently looking for internship opportunities for Summer 2025. 
-            Whether you have a question or just want to say hi, my inbox is always open!
+            I am currently looking for internship opportunities for Summer 2026. Whether you have a question or want to discuss a project, my inbox is always open!
         </p>
-        <a href="mailto:your.email@example.com" class="btn primary big-btn">Say Hello</a>
+        <a href="mailto:lijunhao3165@gmail.com" class="btn primary big-btn">Say Hello</a>
     </section>
 
     <footer>
-        <p>Built by Junhao &copy; 2025</p>
+        <p>Designed & Built by Junhao Li &copy; 2026</p>
     </footer>
 
     <script src="script.js"></script>
