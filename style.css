@@ -33,6 +33,35 @@ body {
     line-height: 1.6;
 }
 
+/* Chinese glyph fallback: Inter has no CJK glyphs, so chain system CJK fonts after it */
+html[lang="zh"] body {
+    font-family: 'Inter', "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+
+/* Fixed top-right language toggle */
+.lang-toggle {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 200;
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    line-height: 1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.lang-toggle:hover {
+    background-color: var(--accent);
+    color: var(--bg-color);
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -74,8 +103,9 @@ ul {
     display: flex;
     justify-content: flex-end; /* Align links to the right */
     align-items: center;
-    padding: 20px 40px;
-    background-color: rgba(18, 18, 18, 0.95);
+    padding: 20px 90px 20px 40px; /* extra right padding clears the fixed language toggle */
+    background-color: rgba(10, 25, 47, 0.85); /* --bg-color with transparency for a subtle blur-friendly bar */
+    backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -297,6 +327,43 @@ ul {
 }
 
 /* =========================================
+   6b. Beyond Code (Interests) Section
+   ========================================= */
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.interest-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+}
+
+.interest-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.interest-card h3 {
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.interest-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
    7. Contact Section (Centered)
    ========================================= */
 #contact {
@@ -318,6 +385,62 @@ ul {
     color: var(--text-muted);
     font-size: 1.1rem;
     line-height: 1.8;
+}
+
+/* Contact form */
+.contact-form {
+    max-width: 520px;
+    margin: 0 auto 35px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 12px 15px;
+    color: var(--text-main);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.contact-form .big-btn {
+    align-self: center;
+    cursor: pointer;
+}
+
+.form-status {
+    min-height: 1.2em;
+    text-align: center;
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+}
+
+.form-status.success {
+    color: var(--accent);
+}
+
+.form-status.error {
+    color: #ff6b6b;
 }
 
 .big-btn {

@@ -16,7 +16,12 @@ This website is used to present my background, skills, projects, and contact inf
 ## Project Structure
 ```text
 .
-├── index.html
-├── style.css
-├── script.js
-└── img1.jpg
+├── index.html        # Single-page site (Home / About / Projects / Contact)
+├── style.css         # Theme, layout, and responsive rules
+├── script.js         # Smooth-scroll for anchor navigation
+├── assets/
+│   ├── img1.jpg      # Profile photo
+│   └── favicon.svg   # Site favicon
+├── CLAUDE.md         # Project notes & change log
+└── README.md
+```

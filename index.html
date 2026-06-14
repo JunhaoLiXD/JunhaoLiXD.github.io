@@ -4,38 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Junhao Li | CS Portfolio</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Junhao Li — Computer Science student at the University of Florida specializing in computer vision, backend systems and IoT. Seeking 2026 internship opportunities.">
+    <meta name="author" content="Junhao Li">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Junhao Li | CS Portfolio">
+    <meta property="og:description" content="Computer Science @ UF — computer vision, backend systems and IoT integration.">
+    <meta property="og:url" content="https://junhaolixd.github.io/">
+    <meta property="og:image" content="https://junhaolixd.github.io/assets/img1.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">中文</button>
+
     <nav class="navbar">
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#beyond" data-i18n="nav.beyond">Beyond</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
-                <p class="small-role">Computer Science @ UF</p>
+                <p class="small-role" data-i18n="hero.role">CV Researcher · Open Source · Cat-supervised</p>
                 <h1 class="hero-title-large">
-                    <span class="outline-text">HELLO, I'M</span><br> <span>JUNHAO.</span>
+                    <span class="outline-text" data-i18n="hero.hello">HELLO, I'M</span><br> <span data-i18n="hero.name">JUNHAO.</span>
                 </h1>
-                <p class="subtitle">
-                    I am a software developer specializing in computer vision, backend systems and IoT integration. Currently seeking 2026 internship opportunities.
+                <p class="subtitle" data-i18n="hero.subtitle">
+                    I build things at the intersection of computer vision, backend systems, and IoT — and I care about making them simple, reliable, and a little bit elegant.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn primary">View My Work</a>
-                    <a href="#contact" class="btn secondary">Email Me</a>
+                    <a href="#projects" class="btn primary" data-i18n="hero.cta1">View My Work</a>
+                    <a href="#contact" class="btn secondary" data-i18n="hero.cta2">Email Me</a>
                 </div>
             </div>
             <div class="hero-image-container">
                 <div class="image-frame">
-                    <img src="img1.jpg" alt="Junhao Li" class="profile-photo">
+                    <img src="assets/img1.jpg" alt="Junhao Li" class="profile-photo">
                 </div>
             </div>
         </div>
@@ -43,15 +61,15 @@
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">01. About Me</h2>
+            <h2 class="section-title" data-i18n="about.title">01. About Me</h2>
             <div class="about-content">
-                <p>
-                    I am a <strong>Computer Science</strong> student at the <strong>University of Florida</strong> (GPA: 3.87) with a minor in <strong>Astronomy</strong>. My primary expertise lies in <strong>Computer Vision</strong> and <strong>Digital Image Processing</strong>, where I focus on developing intelligent systems to interpret and enhance visual data.
+                <p data-i18n="about.p1">
+                    Hi, I'm Junhao — a <strong>Computer Science</strong> student at the <strong>University of Florida</strong> (with a minor in <strong>Astronomy</strong>) who loves turning ideas into things that actually run. By day I tinker with <strong>computer vision</strong> and image processing; I'm an open-source enthusiast, equally at home in <strong>Python</strong> and <strong>C++</strong>, and I like to think of machine learning as a bit of alchemy.
                 </p>
-                <p>
-                    Beyond my research in CV, I have extensive experience building <strong>scalable backend architectures</strong> and <strong>integrated IoT ecosystems</strong>. I enjoy bridging the gap between low-level hardware sensors and high-level software applications. 
+                <p data-i18n="about.p2">
+                    I also enjoy building <strong>scalable backend systems</strong> and <strong>integrated IoT ecosystems</strong> — there's something satisfying about bridging low-level hardware sensors and the software that gives them a voice. When I step away from the keyboard, I'm usually stargazing or being supervised by my two cats.
                 </p>
-                <p>
+                <p data-i18n="about.p3">
                     Here are the core technologies I have been working with:
                 </p>
                 <ul class="skills-list">
@@ -68,28 +86,29 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">02. Selected Projects</h2>
+            <h2 class="section-title" data-i18n="projects.title">02. Selected Projects</h2>
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <h3>Image Enhancement Platform</h3>
-                    <p class="project-desc">
-                        A FastAPI-based platform featuring a plugin-style pipeline architecture. It implements algorithms like CLAHE and Retinex for automated image processing.
+                    <h3 data-i18n="proj1.title">Image Enhancement Platform</h3>
+                    <p class="project-desc" data-i18n="proj1.desc">
+                        A full-stack platform with a plugin-based pipeline architecture for composable image enhancement. It bundles algorithms from CLAHE and Retinex MSR to neural low-light enhancement (Zero-DCE), running pipelines as non-blocking async jobs behind a React UI with side-by-side previews.
                     </p>
                     <div class="project-tech">
-                        <span>Python</span>
                         <span>FastAPI</span>
+                        <span>PyTorch</span>
                         <span>OpenCV</span>
+                        <span>React / TS</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/JunhaoLiXD/vision-enhance-platform" target="_blank">Source Code -></a>
+                        <a href="https://github.com/JunhaoLiXD/vision-enhance-platform" target="_blank" data-i18n="common.source">Source Code -></a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>IoT Smart Bike Lock System</h3>
-                    <p class="project-desc">
-                        Led the design of a dual-ESP32 security system. Integrated GPS tracking, Bluetooth communication, and Firebase for real-time mobile alerts via Pushover.
+                    <h3 data-i18n="proj2.title">IoT Smart Bike Lock System</h3>
+                    <p class="project-desc" data-i18n="proj2.desc">
+                        Led the design of a dual-ESP32 security system: a lock unit detects tampering via accelerometer motion sensing, while a bike unit handles GPS tracking and connectivity. A Firebase Cloud Function listens for alarm events and fires real-time mobile alerts via Pushover.
                     </p>
                     <div class="project-tech">
                         <span>C++ (ESP32)</span>
@@ -97,22 +116,22 @@
                         <span>IoT</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/JunhaoLiXD/Smart_Lock_System" target="_blank">Source Code -></a>
+                        <a href="https://github.com/JunhaoLiXD/Smart_Lock_System" target="_blank" data-i18n="common.source">Source Code -></a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Hand Keypoint Detection</h3>
-                    <p class="project-desc">
-                        As a Research Assistant, I specialized in medical image preprocessing and deep learning. I trained <strong>U-Net</strong> models to achieve precise anatomical labeling and analyzed how various enhancement strategies affect model accuracy.
+                    <h3 data-i18n="proj3.title">Hand Landmark Detection</h3>
+                    <p class="project-desc" data-i18n="proj3.desc">
+                        An end-to-end pipeline for detecting 47 anatomical hand keypoints. Built on <strong>MMPose</strong> with an <strong>HRNet-W32</strong> backbone, I compared a heatmap baseline against a coordinate-classification (SimCC) head — the SimCC model reached <strong>0.94 COCO AP</strong> with notably lower end-point error.
+                    </p>
                     <div class="project-tech">
                         <span>PyTorch</span>
-                        <span>U-Net</span>
-                        <span>Image Preprocessing</span>
+                        <span>MMPose</span>
+                        <span>HRNet / SimCC</span>
                     </div>
-                    <div class="project-status" style="margin-top: 15px; opacity: 0.6;">
-                        <span style="font-family: var(--font-code); font-size: 0.8rem;">
-                        </span>
+                    <div class="project-links">
+                        <a href="https://github.com/JunhaoLiXD/hand-landmark-detection" target="_blank" data-i18n="common.source">Source Code -></a>
                     </div>
                 </div>
 
@@ -120,23 +139,67 @@
         </div>
     </section>
 
+    <section id="beyond" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="beyond.title">03. Beyond Code</h2>
+            <div class="interests-grid">
+
+                <div class="interest-card">
+                    <span class="interest-icon">🔭</span>
+                    <h3 data-i18n="beyond.astro.title">Astronomy</h3>
+                    <p data-i18n="beyond.astro.desc">Minoring in Astronomy and a sucker for a clear night sky — I never get tired of pointing a lens at things millions of light-years away.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-icon">🌱</span>
+                    <h3 data-i18n="beyond.oss.title">Open Source</h3>
+                    <p data-i18n="beyond.oss.desc">I learn best by reading other people's code and giving back where I can. Most of my projects live in the open on GitHub.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-icon">🐱</span>
+                    <h3 data-i18n="beyond.cats.title">Two Cats</h3>
+                    <p data-i18n="beyond.cats.desc">My two cats are my full-time code reviewers — they cross the keyboard at the most critical moments, and somehow it still compiles.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-icon">🎧</span>
+                    <h3 data-i18n="beyond.music.title">Music</h3>
+                    <p data-i18n="beyond.music.desc">I'm a big music lover, and lately I can't stop playing ZUTOMAYO (ずっと真夜中でいいのに。). The right track makes any debugging session better.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
-        <h2 class="contact-title">Get In Touch</h2>
-        <p class="contact-text">
+        <h2 class="contact-title" data-i18n="contact.title">Get In Touch</h2>
+        <p class="contact-text" data-i18n="contact.text">
             I am currently looking for internship opportunities for Summer 2026. Whether you have a question, an internship opportunity, or would like to discuss a project, feel free to reach out!
         </p>
 
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:lijunhao3165@gmail.com">lijunhao3165@gmail.com</a></p>
-        </div>
+        <form id="contact-form" class="contact-form">
+            <!-- Web3Forms access key — replace with your own from https://web3forms.com (just enter your email, no signup) -->
+            <input type="hidden" name="access_key" value="55db0165-a0d2-48cd-adb8-9b5b2b705e5a">
+            <input type="text" name="name" required data-i18n-placeholder="form.name" placeholder="Your name">
+            <input type="email" name="email" required data-i18n-placeholder="form.email" placeholder="Your email">
+            <textarea name="message" rows="5" required data-i18n-placeholder="form.message" placeholder="Your message"></textarea>
+            <!-- honeypot: bots fill this, humans never see it -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+            <button type="submit" class="btn primary big-btn" data-i18n="form.submit">Send Message</button>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
 
-        <a href="mailto:lijunhao3165@gmail.com" class="btn primary big-btn">Say Hello</a>
+        <div class="contact-info">
+            <p><strong data-i18n="contact.emailLabel">Email:</strong> <a href="mailto:lijunhao3165@gmail.com">lijunhao3165@gmail.com</a></p>
+        </div>
     </section>
 
     <footer>
-        <p>Designed & Built by Junhao Li &copy; 2026</p>
+        <p data-i18n="footer.text">Designed &amp; Built by Junhao Li — with too much coffee and two cats nearby. &copy; 2026</p>
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/i18n.js"></script>
 </body>
 </html>
