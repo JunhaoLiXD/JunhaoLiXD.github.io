@@ -1,23 +1,46 @@
 /* =========================================
+   VA-11 HALL-A inspired theme — "Glitch City terminal"
+   Cyberpunk pixel/CRT look, but body copy stays a clean,
+   high-contrast sans so it's always readable.
+   ========================================= */
+
+/* =========================================
    1. Global Variables & Color Theme
    ========================================= */
 :root {
-    /* Background: Deep Navy (Not pitch black) */
-    --bg-color: #0a192f;
-    
-    /* Card Background: Slightly lighter navy to distinguish cards */
-    --card-bg: #112240;
-    
-    /* Text: Soft white for main text, blue-grey for secondary text */
-    --text-main: #ccd6f6;
-    --text-muted: #8892b0;
-    
-    /* Accent: Bright Green/Cyan (High contrast against navy) */
-    --accent: #64ffda;
-    
-    /* Fonts */
-    --font-main: 'Inter', sans-serif;
-    --font-code: 'Fira Code', monospace;
+    /* Night-bar purples (deep, not pitch black) */
+    --bg-color: #15101f;     /* the bar's dark interior */
+    --bg-deep: #0c0913;      /* deepest shade — text on neon bars */
+    --card-bg: #1e1733;      /* panel / window surface */
+    --card-bg-2: #271d40;    /* inputs, raised bits */
+
+    /* Text: soft lavender-white main, dimmed lavender secondary */
+    --text-main: #ece9f5;
+    --text-muted: #9c92ba;
+
+    /* Neon two-tone — the VA-11 Hall-A signature */
+    --pink: #ff4d8d;         /* primary neon (magenta) */
+    --cyan: #39e6d6;         /* secondary neon (teal) */
+    --purple: #b06bff;       /* tertiary, used sparingly */
+    --yellow: #ffd24a;       /* tiny warm highlight (a drink's garnish) */
+
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: #08060f;       /* hard pixel drop-shadow */
+
+    /* Fonts: chunky pixel for chrome, readable pixel for headings, clean sans for reading */
+    --font-pixel: 'Press Start 2P', monospace;        /* short labels only */
+    --font-head: 'Pixelify Sans', 'Press Start 2P', sans-serif;
+    --font-main: 'Inter', sans-serif;                  /* all paragraphs */
+    --font-code: 'Pixelify Sans', monospace;
+}
+
+/* Chinese: pixel fonts have no CJK glyphs — fall back to clean CJK faces.
+   Readability wins; the pixel feeling is carried by color + CRT + layout. */
+html[lang="zh"] {
+    --font-pixel: 'Press Start 2P', "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --font-head: 'Pixelify Sans', "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --font-main: 'Inter', "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    --font-code: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
 * {
@@ -27,114 +50,174 @@
 }
 
 body {
-    background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.7;
+    background-color: var(--bg-color);
+    /* Ambient neon glows in the corners + a soft vignette = "this is a screen" */
+    background-image:
+        radial-gradient(circle at 12% 0%, rgba(255, 77, 141, 0.12), transparent 42%),
+        radial-gradient(circle at 88% 100%, rgba(57, 230, 214, 0.10), transparent 46%),
+        radial-gradient(125% 125% at 50% 50%, transparent 58%, rgba(0, 0, 0, 0.55) 100%);
+    background-attachment: fixed;
 }
 
-/* Chinese glyph fallback: Inter has no CJK glyphs, so chain system CJK fonts after it */
-html[lang="zh"] body {
-    font-family: 'Inter', "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
-}
-
-/* Fixed top-right language toggle */
-.lang-toggle {
+/* CRT scanlines — drawn on top of everything but never intercept clicks.
+   Kept faint (1px line every 3px) so text underneath stays crisp. */
+body::after {
+    content: "";
     position: fixed;
-    top: 16px;
-    right: 20px;
-    z-index: 200;
-    background-color: rgba(10, 25, 47, 0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: var(--font-code);
-    font-size: 0.8rem;
-    line-height: 1;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.lang-toggle:hover {
-    background-color: var(--accent);
-    color: var(--bg-color);
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.13) 0px,
+        rgba(0, 0, 0, 0.13) 1px,
+        transparent 1px,
+        transparent 3px
+    );
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.2s;
+    transition: 0.15s;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
 }
 
 ul {
     list-style: none;
 }
 
+/* Bold keywords lift toward the neon pink so they read as highlights */
+strong {
+    color: var(--pink);
+    font-weight: 700;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Fixed top-right language toggle — a little pixel button */
+.lang-toggle {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 200;
+    background-color: var(--bg-deep);
+    border: 2px solid var(--cyan);
+    color: var(--cyan);
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    line-height: 1;
+    padding: 9px 11px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--shadow);
+    transition: 0.12s;
+}
+
+.lang-toggle:hover {
+    background-color: var(--cyan);
+    color: var(--bg-deep);
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
 /* =========================================
    2. Utility Classes
    ========================================= */
 .container {
-    max-width: 1000px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .section {
     padding: 80px 0;
 }
 
-/* Standard Section Title (Left aligned with underline) */
+/* Section title as a terminal prompt:  > 01. About Me _ */
 .section-title {
-    font-family: var(--font-code);
-    font-size: 1.5rem;
-    color: var(--text-main);
-    margin-bottom: 30px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.7rem;
+    letter-spacing: 0.5px;
+    color: var(--cyan);
+    margin-bottom: 38px;
+    padding-bottom: 14px;
     display: flex;
+    align-items: baseline;
+    border-bottom: 2px solid var(--border);
+}
+
+.section-title::before {
+    content: "> ";
+    color: var(--pink);
+    margin-right: 2px;
+}
+
+.section-title::after {
+    content: "_";
+    color: var(--pink);
+    animation: blink 1.1s steps(1) infinite;
 }
 
 /* =========================================
-   3. Navigation Bar
+   3. Navigation Bar (terminal top bar)
    ========================================= */
 .navbar {
     display: flex;
-    justify-content: flex-end; /* Align links to the right */
+    justify-content: flex-end;
     align-items: center;
-    padding: 20px 90px 20px 40px; /* extra right padding clears the fixed language toggle */
-    background-color: rgba(10, 25, 47, 0.85); /* --bg-color with transparency for a subtle blur-friendly bar */
+    padding: 18px 92px 18px 40px; /* right padding clears the language toggle */
+    background-color: rgba(12, 9, 19, 0.85);
     backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 2px solid var(--pink);
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 26px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
     color: var(--text-muted);
 }
 
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(57, 230, 214, 0.7);
 }
 
 /* =========================================
-   4. Hero Section (Design, Logic, & Code)
+   4. Hero Section
    ========================================= */
 .hero {
-    min-height: 90vh;
+    min-height: 88vh;
     display: flex;
     align-items: center;
 }
 
-/* Grid Layout for Hero: Text on Left, Image on Right */
 .hero-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -148,43 +231,55 @@ ul {
     text-align: left;
 }
 
-/* Small tag above the big title */
+/* Eyebrow tag with a blinking "online" square */
 .small-role {
-    font-family: var(--font-code);
-    color: var(--accent);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    border: 1px solid var(--accent);
+    font-family: var(--font-pixel);
+    color: var(--cyan);
+    font-size: 0.62rem;
+    line-height: 1.8;
+    border: 2px solid rgba(57, 230, 214, 0.5);
+    background-color: rgba(57, 230, 214, 0.07);
     display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+    padding: 9px 14px;
+    margin-bottom: 1.8rem;
 }
 
-/* Large Hero Title Styles */
+.small-role::before {
+    content: "\25A0";   /* ■ */
+    color: var(--pink);
+    margin-right: 8px;
+    animation: blink 1.4s steps(1) infinite;
+}
+
+/* Big pixel title. Press Start 2P is large, so size down + extra leading. */
 .hero-title-large {
-    font-size: 4.5rem;
-    line-height: 1;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    color: #fff;
+    font-family: var(--font-pixel);
+    font-size: clamp(1.7rem, 4.5vw, 3rem);
+    line-height: 1.35;
+    margin-bottom: 1.8rem;
+    color: var(--pink);
+    text-shadow: 0 0 16px rgba(255, 77, 141, 0.55);
+    word-break: break-word;
 }
 
-/* Transparent text with stroke outline */
-.outline-text {
+.hero-title-large .outline-text {
+    display: inline-block;
+    margin-bottom: 0.5em;
     color: transparent;
-    -webkit-text-stroke: 2px var(--accent);
+    -webkit-text-stroke: 1.5px var(--cyan);
+    text-shadow: none;
 }
 
 .subtitle {
+    font-family: var(--font-main);
     font-size: 1.1rem;
+    line-height: 1.75;
     color: var(--text-muted);
-    margin-bottom: 30px;
-    max-width: 500px;
+    margin-bottom: 34px;
+    max-width: 520px;
 }
 
-/* Hero Image Container and Frame */
+/* Hero portrait framed like a VA-11 character card */
 .hero-image-container {
     display: flex;
     justify-content: center;
@@ -193,137 +288,200 @@ ul {
 }
 
 .image-frame {
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 1;
+    padding: 8px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--pink);
+    box-shadow: 8px 8px 0 var(--shadow);
 }
 
-/* Glow effect behind the image */
-.image-frame::after {
-    content: '';
+/* top "window" label bar */
+.image-frame::before {
+    content: "ID_CARD.PNG";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 80%;
-    background: var(--accent);
-    filter: blur(60px);
-    opacity: 0.15;
-    transform: translate(-50%, -50%);
-    z-index: -1;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    transform: translateY(-100%);
+    background-color: var(--cyan);
+    color: var(--bg-deep);
+    font-family: var(--font-pixel);
+    font-size: 0.52rem;
+    letter-spacing: 0.5px;
+    padding: 7px 10px;
+}
+
+/* bottom nameplate bar */
+.image-frame::after {
+    content: "JUNHAO_LI \2022 CV";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    transform: translateY(100%);
+    background-color: var(--pink);
+    color: var(--bg-deep);
+    font-family: var(--font-pixel);
+    font-size: 0.52rem;
+    letter-spacing: 0.5px;
+    padding: 7px 10px;
+    text-align: right;
 }
 
 .profile-photo {
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
     height: auto;
     display: block;
-    /* Removed filter: grayscale(100%); to keep image colorful */
-    filter: none; 
-    transition: transform 0.3s ease;
+    filter: saturate(1.1) contrast(1.05);
 }
 
-/* Buttons */
+/* glow behind the portrait */
+.hero-image-container::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, var(--pink) 0%, var(--cyan) 90%);
+    filter: blur(80px);
+    opacity: 0.22;
+    z-index: 0;
+}
+
+/* Pixel buttons — chunky border + hard offset shadow that "presses in" */
 .btn {
-    padding: 12px 25px;
-    border-radius: 4px;
-    font-family: var(--font-code);
-    font-size: 0.9rem;
-    margin-right: 15px;
-    border: 1px solid var(--accent);
+    padding: 13px 22px;
+    font-family: var(--font-pixel);
+    font-size: 0.66rem;
+    line-height: 1.4;
+    margin-right: 16px;
+    margin-bottom: 12px;
+    border: 2px solid var(--pink);
     display: inline-block;
+    box-shadow: 4px 4px 0 var(--shadow);
+    transition: 0.12s;
 }
 
 .btn.primary {
-    background-color: rgba(0, 173, 181, 0.1);
-    color: var(--accent);
+    background-color: var(--pink);
+    color: var(--bg-deep);
 }
 
 .btn.secondary {
-    border-color: var(--text-muted);
-    color: var(--text-muted);
+    background-color: transparent;
+    border-color: var(--cyan);
+    color: var(--cyan);
 }
 
 .btn:hover {
-    background-color: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.btn.secondary:hover {
+    background-color: var(--cyan);
+    color: var(--bg-deep);
 }
 
 /* =========================================
    5. About Section
    ========================================= */
 .about-content {
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     color: var(--text-muted);
-    max-width: 700px;
+    max-width: 720px;
+}
+
+.about-content p {
+    margin-bottom: 18px;
 }
 
 .skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    gap: 10px;
-    margin-top: 20px;
-    font-family: var(--font-code);
-    font-size: 0.9rem;
+    grid-template-columns: repeat(2, minmax(150px, 220px));
+    gap: 12px;
+    margin-top: 24px;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--text-main);
 }
 
 .skills-list li::before {
-    content: "▹ ";
-    color: var(--accent);
+    content: "\25AA";  /* ▪ */
+    color: var(--cyan);
+    margin-right: 10px;
 }
 
 /* =========================================
-   6. Projects Section
+   6. Projects Section (pixel windows)
    ========================================= */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 26px;
 }
 
 .project-card {
     background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    transition: transform 0.2s;
+    padding: 26px;
+    border: 2px solid rgba(57, 230, 214, 0.28);
+    box-shadow: 6px 6px 0 var(--shadow);
+    transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translate(-3px, -3px);
+    border-color: var(--cyan);
+    box-shadow: 9px 9px 0 var(--shadow);
 }
 
+/* h3 becomes the window's title bar (it's the card's first child) */
 .project-card h3 {
-    color: var(--text-main);
-    margin-bottom: 10px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: var(--bg-deep);
+    background-color: var(--cyan);
+    margin: -26px -26px 20px;
+    padding: 12px 16px;
 }
 
 .project-desc {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .project-tech {
-    font-family: var(--font-code);
-    font-size: 0.8rem;
-    color: var(--accent);
-    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
 }
 
 .project-tech span {
-    margin-right: 10px;
+    font-family: var(--font-pixel);
+    font-size: 0.52rem;
+    line-height: 1.4;
+    color: var(--cyan);
+    border: 1px solid rgba(57, 230, 214, 0.45);
+    padding: 6px 8px;
 }
 
 .project-links a {
-    font-size: 0.9rem;
-    border-bottom: 1px solid transparent;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--pink);
+    border-bottom: 2px solid transparent;
 }
 
 .project-links a:hover {
-    color: var(--accent);
-    border-bottom: 1px solid var(--accent);
+    border-bottom-color: var(--pink);
+    text-shadow: 0 0 8px rgba(255, 77, 141, 0.6);
 }
 
 /* =========================================
@@ -332,68 +490,89 @@ ul {
 .interests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 26px;
 }
 
 .interest-card {
+    position: relative;
     background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    transition: transform 0.2s;
+    padding: 28px 24px 24px;
+    border: 2px solid rgba(176, 107, 255, 0.3);
+    box-shadow: 6px 6px 0 var(--shadow);
+    transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+}
+
+/* thin neon strip across the top of each interest window */
+.interest-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--cyan));
 }
 
 .interest-card:hover {
-    transform: translateY(-5px);
+    transform: translate(-3px, -3px);
+    border-color: var(--purple);
+    box-shadow: 9px 9px 0 var(--shadow);
 }
 
 .interest-icon {
     font-size: 2rem;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     line-height: 1;
 }
 
 .interest-card h3 {
-    color: var(--text-main);
-    margin-bottom: 8px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--purple);
+    margin-bottom: 10px;
 }
 
 .interest-card p {
-    font-size: 0.9rem;
+    font-size: 0.96rem;
     color: var(--text-muted);
 }
 
 /* =========================================
-   7. Contact Section (Centered)
+   7. Contact Section (centered terminal)
    ========================================= */
 #contact {
-    text-align: center; /* Center everything in this section */
-    padding: 120px 0;
-    margin-bottom: 50px;
+    text-align: center;
+    padding: 110px 0;
+    margin-bottom: 40px;
 }
 
 .contact-title {
-    font-size: 3.5rem;
+    font-family: var(--font-head);
     font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--text-main);
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    letter-spacing: 0.5px;
+    margin-bottom: 22px;
+    color: var(--pink);
+    text-shadow: 0 0 16px rgba(255, 77, 141, 0.45);
 }
 
 .contact-text {
     max-width: 600px;
-    margin: 0 auto 50px auto;
+    margin: 0 auto 48px auto;
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     line-height: 1.8;
 }
 
 /* Contact form */
 .contact-form {
-    max-width: 520px;
-    margin: 0 auto 35px auto;
+    max-width: 540px;
+    margin: 0 auto 36px auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     text-align: left;
 }
 
@@ -401,21 +580,21 @@ ul {
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    background-color: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 12px 15px;
+    background-color: var(--card-bg-2);
+    border: 2px solid var(--border);
+    padding: 13px 15px;
     color: var(--text-main);
     font-family: var(--font-main);
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     resize: vertical;
-    transition: border-color 0.2s;
+    transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: var(--accent);
+    border-color: var(--pink);
+    box-shadow: 0 0 0 1px var(--pink);
 }
 
 .contact-form input::placeholder,
@@ -426,17 +605,19 @@ ul {
 .contact-form .big-btn {
     align-self: center;
     cursor: pointer;
+    margin-right: 0;
 }
 
 .form-status {
-    min-height: 1.2em;
+    min-height: 1.4em;
     text-align: center;
-    font-family: var(--font-code);
-    font-size: 0.85rem;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .form-status.success {
-    color: var(--accent);
+    color: var(--cyan);
 }
 
 .form-status.error {
@@ -444,10 +625,23 @@ ul {
 }
 
 .big-btn {
-    padding: 15px 40px;
-    font-size: 1rem;
-    border-radius: 4px;
-    margin-top: 15px;
+    padding: 16px 34px;
+    font-size: 0.74rem;
+    margin-top: 12px;
+}
+
+.contact-info {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+.contact-info a {
+    color: var(--cyan);
+}
+
+.contact-info a:hover {
+    text-shadow: 0 0 8px rgba(57, 230, 214, 0.6);
 }
 
 /* =========================================
@@ -455,10 +649,11 @@ ul {
    ========================================= */
 footer {
     text-align: center;
-    padding: 40px;
-    color: #555;
-    font-family: var(--font-code);
-    font-size: 0.8rem;
+    padding: 36px 24px;
+    color: var(--text-muted);
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    border-top: 2px solid var(--border);
 }
 
 /* =========================================
@@ -466,39 +661,46 @@ footer {
    ========================================= */
 @media (max-width: 900px) {
     .hero-grid {
-        grid-template-columns: 1fr; /* Stack into single column */
+        grid-template-columns: 1fr;
         text-align: center;
-        gap: 3rem;
+        gap: 3.5rem;
     }
-    
+
     .hero-text {
-        order: 2; /* Move text below image on mobile */
+        order: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
+
     .hero-image-container {
-        order: 1; /* Move image to top on mobile */
-        margin-bottom: 20px;
+        order: 1;
+        margin-top: 24px;  /* room for the top label bar */
     }
-    
-    .hero-title-large {
-        font-size: 3rem;
-    }
-    
+
+    /* .hero-title-large and .contact-title scale fluidly via clamp() */
+
     .image-frame {
-        max-width: 70%;
-        margin: 0 auto;
+        max-width: 75%;
     }
 
     .navbar {
         justify-content: center;
-        padding: 20px;
+        padding: 18px 20px;
     }
-    
-    .contact-title {
-        font-size: 2.5rem;
+}
+
+/* =========================================
+   10. Reduced motion — kill blinks & transitions
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
