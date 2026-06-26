@@ -1,0 +1,284 @@
+/* =========================================
+   Cat Tarot — page styles
+   Inherits the VA-11 Hall-A theme variables from style.css.
+   ========================================= */
+
+.tarot-body {
+    min-height: 100vh;
+}
+
+/* Top bar with just a back link */
+.tarot-nav {
+    justify-content: flex-start;
+    padding: 18px 40px;
+}
+
+.tarot-back {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--cyan);
+}
+
+.tarot-back:hover {
+    text-shadow: 0 0 8px rgba(57, 230, 214, 0.7);
+}
+
+.tarot-main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* ---- Header ---- */
+.tarot-header {
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.tarot-title {
+    font-family: var(--font-pixel);
+    font-size: clamp(1.5rem, 4.5vw, 2.6rem);
+    line-height: 1.3;
+    color: var(--pink);
+    text-shadow: 0 0 18px rgba(255, 77, 141, 0.55);
+    margin-bottom: 20px;
+}
+
+.tarot-sub {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--cyan);
+    margin-bottom: 14px;
+}
+
+.tarot-intro {
+    font-family: var(--font-main);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ---- Controls ---- */
+.tarot-controls {
+    text-align: center;
+    margin: 8px 0 40px;
+}
+
+.tarot-controls-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarot-hint {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+/* ---- Spread ---- */
+.spread {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 0 auto 44px;
+    max-width: 980px;
+}
+
+.tarot-card {
+    height: 480px;
+    perspective: 1200px;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.tarot-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 2px solid var(--border);
+    box-shadow: 6px 6px 0 var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ----- Card back ----- */
+.card-back {
+    justify-content: center;
+    gap: 16px;
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle at 50% 38%, rgba(176, 107, 255, 0.18), transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 6px, transparent 6px 12px);
+    border-color: var(--purple);
+}
+
+.card-back-sigil {
+    width: 92px;
+    filter: drop-shadow(0 0 10px rgba(255, 77, 141, 0.5));
+}
+
+.card-back .cat-fur { fill: #2a2350; }
+.card-back .cat-belly { fill: rgba(255, 255, 255, 0.06); }
+.card-back .cat-ear { fill: #1c1733; }
+.card-back .cat-eye { fill: var(--pink); }
+.card-back .cat-nose { fill: var(--cyan); }
+.card-back .cat-paw { fill: #1c1733; }
+.card-back .cat-whisker { fill: rgba(255, 255, 255, 0.25); }
+
+.card-back-label {
+    font-family: var(--font-pixel);
+    font-size: 0.52rem;
+    line-height: 1.6;
+    color: var(--cyan);
+    letter-spacing: 1px;
+}
+
+/* ----- Card front ----- */
+.card-front {
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    padding: 0;
+    background-color: var(--card-bg);
+    border-color: var(--cyan);
+    text-align: center;
+}
+
+.card-pos {
+    font-family: var(--font-pixel);
+    font-size: 0.62rem;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    color: var(--bg-deep);
+    background-color: var(--cyan);
+    align-self: stretch;
+    padding: 9px;
+}
+
+/* art fills the upper part of the card so the cat reads large */
+.card-art {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    min-height: 0;
+}
+
+/* reversed: rotate ONLY the cat, keep prop/text readable */
+.card-front.is-reversed .card-cat {
+    transform: rotate(180deg);
+}
+
+.card-cat {
+    width: 150px;
+    max-height: 100%;
+    filter: drop-shadow(0 0 14px color-mix(in srgb, var(--fur) 55%, transparent));
+}
+
+.card-prop {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 1.9rem;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+}
+
+/* description box — sits in the lower part of the card, like a game card's text plate */
+.card-info {
+    margin: 0 12px 12px;
+    padding: 11px 12px 13px;
+    border: 1px solid rgba(57, 230, 214, 0.4);
+    background-color: rgba(8, 6, 15, 0.45);
+}
+
+.card-trad {
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.card-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.24rem;
+    line-height: 1.2;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.card-meaning {
+    font-family: var(--font-main);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-main);
+}
+
+/* ---- Shared pixel cat colors (front + back overrides above) ---- */
+.cat {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cat-fur { fill: var(--fur, var(--cyan)); }
+.cat-belly { fill: rgba(255, 255, 255, 0.3); }
+.cat-ear { fill: rgba(0, 0, 0, 0.32); }
+.cat-eye { fill: var(--eye, #ffd24a); }
+.cat-nose { fill: #ff9ec4; }
+.cat-paw { fill: rgba(0, 0, 0, 0.2); }
+.cat-whisker { fill: rgba(255, 255, 255, 0.55); }
+
+/* ---- Footer ---- */
+.tarot-footer {
+    text-align: center;
+    padding: 30px 24px;
+    color: var(--text-muted);
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    border-top: 2px solid var(--border);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+    .spread {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        gap: 20px;
+    }
+    .tarot-card { height: 500px; }
+    .tarot-nav { padding: 18px 20px; }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+    .card-inner { transition-duration: 0.01ms; }
+}

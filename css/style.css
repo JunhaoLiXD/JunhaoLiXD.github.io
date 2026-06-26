@@ -209,6 +209,16 @@ strong {
     text-shadow: 0 0 8px rgba(57, 230, 214, 0.7);
 }
 
+/* The tarot link is a special feature — make it glow pink */
+.nav-links a.nav-tarot {
+    color: var(--pink);
+}
+
+.nav-links a.nav-tarot:hover {
+    color: var(--pink);
+    text-shadow: 0 0 10px rgba(255, 77, 141, 0.8);
+}
+
 /* =========================================
    4. Hero Section
    ========================================= */

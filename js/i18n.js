@@ -13,6 +13,7 @@ const translations = {
         "nav.projects": "Projects",
         "nav.beyond": "Beyond",
         "nav.contact": "Contact",
+        "nav.tarot": "🔮 Tarot",
 
         "hero.role": "CV Researcher · Open Source · Cat-supervised",
         "hero.hello": "HELLO, I'M",
@@ -66,6 +67,7 @@ const translations = {
         "nav.projects": "项目",
         "nav.beyond": "生活",
         "nav.contact": "联系",
+        "nav.tarot": "🔮 占卜",
 
         "hero.role": "计算机视觉 · 开源爱好者 · 资深猫奴",
         "hero.hello": "你好，我是",
