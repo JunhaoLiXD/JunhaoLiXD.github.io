@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy | Junhao Li</title>
+    <meta name="description" content="Astronomy — observatory nights, astrophotography, and sci-fi novel recommendations from Junhao Li's portfolio.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/astronomy.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="astro-body">
+
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">中文</button>
+
+    <nav class="navbar astro-nav">
+        <a class="astro-back" href="../index.html#beyond" data-t="back">← Back</a>
+    </nav>
+
+    <main class="astro-main">
+        <header class="astro-header">
+            <h1 class="astro-title" data-t="title">ASTRONOMY</h1>
+            <p class="astro-sub" data-t="sub">Observatory nights, and the sci-fi that got me looking up</p>
+            <p class="astro-intro" data-t="intro">Romance isn't found only here on Earth. Below: photos I've taken, and novels I keep recommending.</p>
+        </header>
+
+        <!-- 01. Photo Album -->
+        <section class="astro-section">
+            <h2 class="section-title" data-t="galleryTitle">01. Photo Album</h2>
+            <p class="astro-section-intro" data-t="galleryIntro">Observatory visits and astrophotography. Click a photo to enlarge.</p>
+            <div id="photo-grid" class="photo-grid"></div>
+        </section>
+
+        <!-- 02. Sci-Fi Shelf -->
+        <section class="astro-section">
+            <h2 class="section-title" data-t="booksTitle">02. Sci-Fi Shelf</h2>
+            <p class="astro-section-intro" data-t="booksIntro">Novels I love — the ones I'd hand you first.</p>
+            <div id="book-grid" class="book-grid"></div>
+        </section>
+    </main>
+
+    <footer class="astro-footer">
+        <p>🔭 Astronomy · Junhao Li</p>
+    </footer>
+
+    <!-- Lightbox for enlarged photos -->
+    <div id="lightbox" class="lightbox" hidden>
+        <button type="button" class="lightbox-close" aria-label="Close">✕</button>
+        <figure class="lightbox-figure">
+            <img id="lightbox-img" src="" alt="">
+            <figcaption id="lightbox-cap" class="lightbox-cap"></figcaption>
+        </figure>
+    </div>
+
+    <script src="../js/astronomy.js"></script>
+</body>
+</html>

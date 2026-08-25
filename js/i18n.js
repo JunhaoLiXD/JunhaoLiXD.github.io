@@ -15,17 +15,18 @@ const translations = {
         "nav.contact": "Contact",
         "nav.tarot": "🔮 Tarot",
 
-        "hero.role": "CV Researcher · Open Source · Cat-supervised",
+        "hero.role": "CV Researcher · J-Music Lover · Cat-supervised",
         "hero.hello": "HELLO, I'M",
         "hero.name": "JUNHAO.",
-        "hero.subtitle": "I build things at the intersection of computer vision, backend systems, and IoT — and I care about making them simple, reliable, and a little bit elegant.",
+        "hero.subtitle": "Welcome to my site! There are no easter eggs here… probably.",
         "hero.cta1": "View My Work",
         "hero.cta2": "Email Me",
 
         "about.title": "01. About Me",
-        "about.p1": "Hi, I'm Junhao — a <strong>Computer Science</strong> student at the <strong>University of Florida</strong> (with a minor in <strong>Astronomy</strong>) who loves turning ideas into things that actually run. By day I tinker with <strong>computer vision</strong> and image processing; I'm an open-source enthusiast, equally at home in <strong>Python</strong> and <strong>C++</strong>, and I like to think of machine learning as a bit of alchemy.",
-        "about.p2": "I also enjoy building <strong>scalable backend systems</strong> and <strong>integrated IoT ecosystems</strong> — there's something satisfying about bridging low-level hardware sensors and the software that gives them a voice. When I step away from the keyboard, I'm usually stargazing or being supervised by my two cats.",
-        "about.p3": "Here are the core technologies I have been working with:",
+        "about.p1": "Hi, I'm Junhao Li — currently majoring in <strong>Computer Science</strong> with a minor in <strong>Astronomy</strong> at the University of Florida. Right now I'm really into <strong>computer vision and AI models</strong>, and I love tinkering with all kinds of open-source projects. Rather than letting an idea stay just an idea, I enjoy actually building it, getting it to run, and then polishing it bit by bit.",
+        "about.p2": "Music is an essential part of who I am. Lately I've been listening mostly to Japanese music, especially <strong>ZUTOMAYO (ずっと真夜中でいいのに。) — if you're an ACAね fan too, then we're friends for life!</strong> Right now I'm still basking in the memories of their Hong Kong concert.",
+        "about.p3": "I also enjoy a drink now and then — whisky and cocktails are my favorites. If you'd like to buy me a drink, <strong>feel free to reach out anytime!</strong><a href=\"#contact\" class=\"inline-jump\">Contact →</a> Or if you're after some mysterious house special, hit me up too — I promise I can pour you something a little different!",
+        "about.p4": "Or, if you'd like to meet my two adorable cats, <strong>Quanquan</strong> and <strong>Yuanyuan</strong>, I've put together a photo album for them too — feel free!",
 
         "projects.title": "02. Selected Projects",
         "proj1.title": "Image Enhancement Platform",
@@ -35,19 +36,21 @@ const translations = {
         "proj3.title": "Hand Landmark Detection",
         "proj3.desc": "An end-to-end pipeline for detecting 47 anatomical hand keypoints. Built on <strong>MMPose</strong> with an <strong>HRNet-W32</strong> backbone, I compared a heatmap baseline against a coordinate-classification (SimCC) head — the SimCC model reached <strong>0.94 COCO AP</strong> with notably lower end-point error.",
         "common.source": "Source Code ->",
+        "common.live": "Live Demo ->",
 
         "beyond.title": "03. Beyond Code",
         "beyond.astro.title": "Astronomy",
-        "beyond.astro.desc": "Minoring in Astronomy and a sucker for a clear night sky — I never get tired of pointing a lens at things millions of light-years away.",
-        "beyond.oss.title": "Open Source",
-        "beyond.oss.desc": "I learn best by reading other people's code and giving back where I can. Most of my projects live in the open on GitHub.",
+        "beyond.astro.desc": "Minoring in Astronomy — and a sci-fi lover at heart. Romance isn't found only here on Earth.",
+        "beyond.astro.more": "Photos & sci-fi shelf →",
+        "beyond.drink.title": "Drinking",
+        "beyond.drink.desc": "What dispels all sorrows? Only a good drink! If you're coming over, bring a bottle of gin — and let's make gin & tonics together!",
         "beyond.cats.title": "Two Cats",
-        "beyond.cats.desc": "My two cats are my full-time code reviewers — they cross the keyboard at the most critical moments, and somehow it still compiles.",
+        "beyond.cats.desc": "My two cutest little ones — Quanquan and Yuanyuan! Wishing them health and happiness, always!",
         "beyond.music.title": "Music",
-        "beyond.music.desc": "I'm a big music lover, and lately I can't stop playing ZUTOMAYO (ずっと真夜中でいいのに。). The right track makes any debugging session better.",
+        "beyond.music.desc": "A J-music lover, forever devoted to ZUTOMAYO (ずっと真夜中でいいのに。)!",
 
         "contact.title": "Get In Touch",
-        "contact.text": "I am currently looking for internship opportunities for Summer 2026. Whether you have a question, an internship opportunity, or would like to discuss a project, feel free to reach out!",
+        "contact.text": "I'm currently looking for job opportunities in 2027. Whether you have a question, an opportunity, or would like to discuss a project, feel free to reach out!",
         "contact.emailLabel": "Email:",
 
         "form.name": "Your name",
@@ -69,17 +72,18 @@ const translations = {
         "nav.contact": "联系",
         "nav.tarot": "🔮 占卜",
 
-        "hero.role": "计算机视觉 · 开源爱好者 · 资深猫奴",
+        "hero.role": "计算机视觉 · 日音爱好者 · 猫奴",
         "hero.hello": "你好，我是",
-        "hero.name": "君豪。",
-        "hero.subtitle": "我在计算机视觉、后端系统与物联网的交叉点上做东西，并且在意让它们简单、可靠，还带一点优雅。",
+        "hero.name": "李君豪。",
+        "hero.subtitle": "欢迎光临我的网站！这里没有彩蛋……应该没有。",
         "hero.cta1": "查看作品",
         "hero.cta2": "邮件联系",
 
         "about.title": "01. 关于我",
-        "about.p1": "你好，我是君豪 —— 佛罗里达大学的<strong>计算机科学</strong>学生（辅修<strong>天文学</strong>），喜欢把想法变成真正能跑起来的东西。白天我折腾<strong>计算机视觉</strong>和图像处理；我是个开源爱好者，<strong>Python</strong> 和 <strong>C++</strong> 都用得顺手，也乐于把机器学习当成一门“炼金术”。",
-        "about.p2": "我也喜欢构建<strong>可扩展的后端系统</strong>和<strong>集成式物联网生态</strong> —— 在底层硬件传感器和赋予它们“声音”的软件之间架起桥梁，是件很有成就感的事。离开键盘的时候，我通常在看星星，或者被我的两只猫监督。",
-        "about.p3": "以下是我常用的核心技术：",
+        "about.p1": "你好，我是李君豪，目前在佛罗里达大学主修 <strong>计算机科学</strong>，辅修 <strong>天文学</strong>。我目前对 <strong>计算机视觉和 AI 模型</strong> 比较感兴趣，也很喜欢折腾各种开源项目。比起只停留在想法上，我更享受把一个点子真正做出来、跑起来，再一点点把它改好的过程。",
+        "about.p2": "音乐是我不可或缺的一部分。最近听得最多的是日音，尤其喜欢 <strong>ずっと真夜中でいいのに，如果你也喜欢 ACAね，那么我们就是永远的朋友！</strong>目前正沉浸在香港场演唱会的回忆中。",
+        "about.p3": "我平时也会小酌几杯，比较偏爱威士忌和鸡尾酒。如果你想请我喝酒，<strong>请随时联系我！</strong><a href=\"#contact\" class=\"inline-jump\">联系我 →</a>或者你想喝点神秘特调，你也可以联系我，我保证能让你喝上点不一样的东西！",
+        "about.p4": "又或者，你想看看我家的两只可爱猫咪，<strong>圈圈</strong>和<strong>缘缘</strong>，我也准备了相册，feel free！",
 
         "projects.title": "02. 精选项目",
         "proj1.title": "图像增强平台",
@@ -89,19 +93,22 @@ const translations = {
         "proj3.title": "手部关键点检测",
         "proj3.desc": "一套端到端的手部解剖关键点检测流程，可定位 47 个关键点。基于 <strong>MMPose</strong> 与 <strong>HRNet-W32</strong> 主干网络，对比了 heatmap 基线与坐标分类（SimCC）方案——SimCC 模型达到 <strong>0.94 COCO AP</strong>，端点误差显著更低。",
         "common.source": "查看源码 ->",
+        "common.live": "在线体验 ->",
 
         "beyond.title": "03. 键盘之外",
         "beyond.astro.title": "天文",
-        "beyond.astro.desc": "辅修天文学，也是个晴朗夜空的死忠粉 —— 把镜头对准几百万光年之外的东西，我永远不会腻。",
-        "beyond.oss.title": "开源",
-        "beyond.oss.desc": "我最好的学习方式就是读别人的代码，并在力所能及时回馈社区。我的大部分项目都公开在 GitHub 上。",
-        "beyond.cats.title": "两只猫",
-        "beyond.cats.desc": "我的两只猫是全职代码审查员 —— 它们总在最关键的时刻踩过键盘，而代码居然还能编译通过。",
+        "beyond.astro.desc": "辅修天文学，也是个科幻爱好者。浪漫的事物，不仅仅在地球上。",
+        "beyond.astro.more": "相册 & 科幻书架 →",
         "beyond.music.title": "音乐",
-        "beyond.music.desc": "我是个不折不扣的音乐爱好者，最近单曲循环最多的是 ZUTOMAYO（ずっと真夜中でいいのに。）。一首对的歌，能让任何 debug 时光都好过不少。",
+        "beyond.music.desc": "日音爱好者，永远喜欢 ZUTOMAYO（ずっと真夜中でいいのに。）！",
+        "beyond.cats.title": "两只猫",
+        "beyond.cats.desc": "我最可爱的两个小家伙！圈圈和缘缘！希望他们永远健康开心！",
+        "beyond.drink.title": "喝酒",
+        "beyond.drink.desc": "何以解忧，唯有杜康！来我家喝酒的话，能不能带上一瓶金酒，然后一起喝金汤力！",
+
 
         "contact.title": "联系我",
-        "contact.text": "我目前正在寻找 2026 年暑期的实习机会。无论你有任何问题、实习机会，还是想交流项目，都欢迎随时与我联系！",
+        "contact.text": "我目前正在寻找 2027 年的工作机会。无论你有任何问题、实习机会，还是想交流项目，都欢迎随时与我联系！",
         "contact.emailLabel": "邮箱：",
 
         "form.name": "你的称呼",
@@ -112,7 +119,7 @@ const translations = {
         "form.success": "谢谢！消息已发送，我会尽快回复你。",
         "form.error": "出了点问题，请直接发邮件到 lijunhao3165@gmail.com。",
 
-        "footer.text": "由李君豪设计与开发 —— 伴着过量咖啡和身旁的两只猫。&copy; 2026"
+        "footer.text": "由李君豪设计与开发 —— 以及过量咖啡和身旁的两只猫。&copy; 2026"
     }
 };
 

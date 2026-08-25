@@ -407,6 +407,31 @@ strong {
     margin-bottom: 18px;
 }
 
+/* Small inline "jump" chip (e.g. the buy-me-a-drink → Contact link).
+   Sits inline with the paragraph but stays visually light so it never
+   breaks the reading flow. */
+.inline-jump {
+    display: inline-block;
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    line-height: 1;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 4px 7px;
+    margin: 0 5px;
+    vertical-align: middle;
+    white-space: nowrap;
+    box-shadow: 2px 2px 0 var(--shadow);
+    transition: 0.12s;
+}
+
+.inline-jump:hover {
+    background-color: var(--cyan);
+    color: var(--bg-deep);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--shadow);
+}
+
 .skills-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(150px, 220px));
@@ -481,6 +506,13 @@ strong {
     padding: 6px 8px;
 }
 
+.project-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
 .project-links a {
     font-family: var(--font-head);
     font-weight: 500;
@@ -547,6 +579,22 @@ strong {
 .interest-card p {
     font-size: 0.96rem;
     color: var(--text-muted);
+}
+
+/* "Explore →" link at the bottom of an interest card that has its own page */
+.interest-more {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 0.98rem;
+    color: var(--cyan);
+    border-bottom: 2px solid transparent;
+}
+
+.interest-more:hover {
+    border-bottom-color: var(--cyan);
+    text-shadow: 0 0 8px rgba(57, 230, 214, 0.6);
 }
 
 /* =========================================

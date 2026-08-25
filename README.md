@@ -19,17 +19,21 @@ This website is used to present my background, skills, projects, and contact inf
 ├── index.html        # Home page (Home / About / Projects / Beyond / Contact)
 ├── tarot/
 │   └── index.html    # Cat Tarot reading page — served at /tarot/
+├── astronomy/
+│   └── index.html    # Astronomy page (photo album + sci-fi shelf) — served at /astronomy/
 ├── css/
 │   ├── style.css     # Theme, layout, and responsive rules (shared)
-│   └── tarot.css     # Tarot-page styles
+│   ├── tarot.css     # Tarot-page styles
+│   └── astronomy.css # Astronomy-page styles
 ├── js/
 │   ├── script.js     # Smooth-scroll for anchor navigation
 │   ├── i18n.js       # EN/ZH translations, language toggle, contact form
-│   └── tarot.js      # Cat Tarot deck data + draw logic
+│   ├── tarot.js      # Cat Tarot deck data + draw logic
+│   └── astronomy.js  # Astronomy page: photo + book data, gallery + lightbox
 ├── assets/
 │   ├── img1.jpg      # Profile photo
-│   └── favicon.svg   # Site favicon
-├── CLAUDE.md         # Project notes & change log
+│   ├── favicon.svg   # Site favicon
+│   └── astro/        # Astronomy photos (add your own; referenced by astronomy.js)
 └── README.md
 ```
 
