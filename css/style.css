@@ -324,7 +324,7 @@ strong {
 
 /* bottom nameplate bar */
 .image-frame::after {
-    content: "JUNHAO_LI \2022 CV";
+    content: "JUNHAO_LI";
     position: absolute;
     left: -2px;
     right: -2px;

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 192" width="132" height="192" role="img" aria-label="山 封面">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0713"/>
+      <stop offset="0.6" stop-color="#141a33"/>
+      <stop offset="1" stop-color="#1d2748"/>
+    </linearGradient>
+    <radialGradient id="summit" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#a9fff5"/>
+      <stop offset="100%" stop-color="#39e6d6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="132" height="192" fill="url(#sky2)"/>
+
+  <!-- pixel starfield -->
+  <g fill="#ffffff" shape-rendering="crispEdges">
+    <rect x="16" y="20" width="2" height="2"/>
+    <rect x="38" y="14" width="2" height="2" opacity="0.7"/>
+    <rect x="58" y="30" width="2" height="2" opacity="0.8"/>
+    <rect x="100" y="18" width="2" height="2" opacity="0.6"/>
+    <rect x="116" y="34" width="2" height="2" opacity="0.75"/>
+    <rect x="26" y="44" width="2" height="2" opacity="0.6"/>
+    <rect x="120" y="58" width="2" height="2" opacity="0.55"/>
+  </g>
+  <g fill="#b06bff" shape-rendering="crispEdges">
+    <rect x="46" y="48" width="2" height="2" opacity="0.7"/>
+    <rect x="108" y="72" width="2" height="2" opacity="0.6"/>
+  </g>
+
+  <!-- the summit star: the goal at the peak -->
+  <circle cx="82" cy="58" r="15" fill="url(#summit)"/>
+  <g fill="#eafffb" shape-rendering="crispEdges">
+    <rect x="81" y="53" width="2" height="10"/>
+    <rect x="77" y="57" width="10" height="2"/>
+  </g>
+
+  <!-- mountain ridges, back to front -->
+  <polygon points="0,120 26,86 44,104 70,70 96,102 132,74 132,192 0,192" fill="#2a2148"/>
+  <polygon points="0,192 0,138 30,104 58,132 82,96 110,128 132,110 132,192" fill="#1a1436"/>
+  <polygon points="0,192 0,160 40,120 82,66 120,124 132,146 132,192" fill="#100b22"/>
+
+  <!-- climbing path toward the summit -->
+  <polyline points="30,190 44,168 40,150 58,132 66,110 82,66"
+            fill="none" stroke="#39e6d6" stroke-opacity="0.9" stroke-width="1.6"
+            stroke-dasharray="4 4" stroke-linecap="round"/>
+  <!-- the climber -->
+  <circle cx="58" cy="132" r="2.6" fill="#ff4d8d"/>
+
+  <!-- title plate -->
+  <rect x="0" y="150" width="132" height="42" fill="#08060f" opacity="0.5"/>
+  <text x="66" y="180" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC','Noto Sans SC',sans-serif" font-weight="700" font-size="24" fill="#f4f0ff">山</text>
+
+  <!-- pixel frame -->
+  <rect x="1" y="1" width="130" height="190" fill="none" stroke="#39e6d6" stroke-opacity="0.5" stroke-width="2" shape-rendering="crispEdges"/>
+</svg>

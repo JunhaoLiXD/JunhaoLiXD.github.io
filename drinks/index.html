@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drinking | Junhao Li</title>
+    <meta name="description" content="Drinking — a ranked top-10 of classic cocktails, plus photos from the bar and Junhao Li's home counter.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/drinks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="drink-body">
+
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">中文</button>
+
+    <nav class="navbar drink-nav">
+        <a class="drink-back" href="../index.html#beyond" data-t="back">← Back</a>
+    </nav>
+
+    <main class="drink-main">
+        <header class="drink-header">
+            <h1 class="drink-title" data-t="title">DRINKING</h1>
+            <p class="drink-sub" data-t="sub">What dispels all sorrows? Only a good drink.</p>
+            <p class="drink-intro" data-t="intro">A ranked shelf of the classics I keep coming back to, and photos from the bar and my little home counter.</p>
+        </header>
+
+        <!-- 01. Top 10 Cocktails -->
+        <section class="drink-section">
+            <h2 class="section-title" data-t="rankTitle">01. Top 10 Classics</h2>
+            <p class="drink-section-intro" data-t="rankIntro">My favourite classic cocktails, ranked. Fight me at the bar.</p>
+            <div id="rank-list" class="rank-list"></div>
+        </section>
+
+        <!-- 02. Photo Album (two tabs) -->
+        <section class="drink-section">
+            <h2 class="section-title" data-t="galleryTitle">02. Photo Album</h2>
+            <div class="gtabs" role="tablist" aria-label="Photo album tabs">
+                <button type="button" class="gtab is-active" data-tab="bar" data-t="tabBar">At the Bar</button>
+                <button type="button" class="gtab" data-tab="home" data-t="tabHome">Home Bar</button>
+            </div>
+            <div class="gallery" id="gallery">
+                <div class="gallery-stage">
+                    <span class="gallery-count"><span id="gallery-idx">00</span> / <span id="gallery-total">00</span></span>
+                    <button type="button" class="gallery-arrow gallery-prev" aria-label="Previous photo">‹</button>
+                    <div class="gallery-track" id="gallery-track"></div>
+                    <button type="button" class="gallery-arrow gallery-next" aria-label="Next photo">›</button>
+                </div>
+                <div class="gallery-dots" id="gallery-dots" role="tablist" aria-label="Photo navigation"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="drink-footer">
+        <p>🍸 Drinking · Junhao Li</p>
+    </footer>
+
+    <!-- Lightbox for enlarged photos -->
+    <div id="lightbox" class="lightbox" hidden>
+        <button type="button" class="lightbox-close" aria-label="Close">✕</button>
+        <figure class="lightbox-figure">
+            <img id="lightbox-img" src="" alt="">
+            <figcaption id="lightbox-cap" class="lightbox-cap"></figcaption>
+        </figure>
+    </div>
+
+    <script src="../js/drinks.js"></script>
+</body>
+</html>

@@ -76,79 +76,131 @@
 }
 
 /* =========================================
-   01. Photo album
+   01. Photo album — sliding "observation deck"
+   A single framed viewport; photos slide in over a starfield.
    ========================================= */
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 22px;
+.gallery {
+    --stage-h: clamp(300px, 56vh, 560px);
 }
 
-/* Each tile is a pixel-framed window, echoing the hero ID card. */
-.photo-tile {
-    margin: 0;
-    background-color: var(--card-bg);
-    border: 2px solid rgba(57, 230, 214, 0.28);
-    box-shadow: 6px 6px 0 var(--shadow);
-    transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+.gallery-stage {
+    position: relative;
+    height: var(--stage-h);
+    overflow: hidden;
+    touch-action: pan-y;
+    background-color: var(--bg-deep);
+    background-image:
+        radial-gradient(1.5px 1.5px at 18% 28%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 72% 62%, rgba(255, 255, 255, 0.45), transparent),
+        radial-gradient(1px 1px at 46% 82%, rgba(57, 230, 214, 0.55), transparent),
+        radial-gradient(1px 1px at 88% 22%, rgba(176, 107, 255, 0.6), transparent),
+        radial-gradient(circle at 50% 50%, rgba(176, 107, 255, 0.10), transparent 70%);
+    border: 2px solid rgba(57, 230, 214, 0.35);
+    box-shadow: 8px 8px 0 var(--shadow);
+    cursor: grab;
 }
 
-.photo-tile:hover {
-    transform: translate(-3px, -3px);
-    border-color: var(--cyan);
-    box-shadow: 9px 9px 0 var(--shadow);
-}
+.gallery-stage:active { cursor: grabbing; }
 
-.photo-btn {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    line-height: 0;
-}
-
-.photo-btn img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-    filter: saturate(1.08) contrast(1.03);
-}
-
-/* Placeholder tile (no image yet) */
-.photo-placeholder {
+.gallery-track {
     display: flex;
-    flex-direction: column;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+}
+
+.gallery-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    aspect-ratio: 4 / 3;
-    background-image:
-        radial-gradient(circle at 50% 45%, rgba(176, 107, 255, 0.16), transparent 62%),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 6px, transparent 6px 12px);
+    padding: 18px;
 }
 
-.photo-star {
-    font-size: 2rem;
+.gallery-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 26px rgba(0, 0, 0, 0.55);
+    filter: saturate(1.06) contrast(1.02);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Prev / next arrows */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(12, 9, 19, 0.72);
+    border: 2px solid var(--cyan);
     color: var(--cyan);
-    filter: drop-shadow(0 0 10px rgba(57, 230, 214, 0.6));
-}
-
-.photo-soon {
-    font-family: var(--font-pixel);
-    font-size: 0.52rem;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-}
-
-.photo-cap {
     font-family: var(--font-head);
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    padding: 11px 14px;
-    border-top: 2px solid var(--border);
+    font-size: 1.9rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--shadow);
+    transition: 0.12s;
+}
+
+.gallery-arrow:hover {
+    background-color: var(--cyan);
+    color: var(--bg-deep);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.gallery-prev { left: 14px; }
+.gallery-next { right: 14px; }
+
+/* Slide counter — top-left readout */
+.gallery-count {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    z-index: 5;
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: var(--pink);
+    background-color: rgba(12, 9, 19, 0.72);
+    padding: 6px 9px;
+    border: 1px solid rgba(255, 77, 141, 0.5);
+}
+
+/* Dot indicators */
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    background-color: transparent;
+    border: 2px solid var(--text-muted);
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.gallery-dot:hover { border-color: var(--cyan); }
+
+.gallery-dot.is-active {
+    background-color: var(--pink);
+    border-color: var(--pink);
+    box-shadow: 0 0 10px rgba(255, 77, 141, 0.7);
 }
 
 /* =========================================
@@ -311,11 +363,13 @@
 @media (max-width: 720px) {
     .astro-nav { padding: 18px 20px; }
     .book-grid { grid-template-columns: 1fr; }
+    .gallery-arrow { width: 38px; height: 50px; font-size: 1.5rem; }
+    .gallery-slide { padding: 12px; }
 }
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
-    .photo-tile,
+    .gallery-track,
     .book-card {
         transition-duration: 0.01ms;
     }

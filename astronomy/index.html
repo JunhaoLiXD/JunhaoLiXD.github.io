@@ -29,8 +29,15 @@
         <!-- 01. Photo Album -->
         <section class="astro-section">
             <h2 class="section-title" data-t="galleryTitle">01. Photo Album</h2>
-            <p class="astro-section-intro" data-t="galleryIntro">Observatory visits and astrophotography. Click a photo to enlarge.</p>
-            <div id="photo-grid" class="photo-grid"></div>
+            <div class="gallery" id="gallery">
+                <div class="gallery-stage">
+                    <span class="gallery-count"><span id="gallery-idx">01</span> / <span id="gallery-total">05</span></span>
+                    <button type="button" class="gallery-arrow gallery-prev" aria-label="Previous photo">‹</button>
+                    <div class="gallery-track" id="gallery-track"></div>
+                    <button type="button" class="gallery-arrow gallery-next" aria-label="Next photo">›</button>
+                </div>
+                <div class="gallery-dots" id="gallery-dots" role="tablist" aria-label="Photo navigation"></div>
+            </div>
         </section>
 
         <!-- 02. Sci-Fi Shelf -->
